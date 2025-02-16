@@ -5,7 +5,7 @@ public class Game : MonoBehaviour
 {
     [SerializeField] private Bird _bird;
     [SerializeField] private Mover _birdMover;
-    [SerializeField] private EnemySpawner _enemySpawner;
+    [SerializeField] private EnemyPool _enemySpawner;
     [SerializeField] private StartScreen _startScreen;
     [SerializeField] private EndScreen _endScreen;
     [SerializeField] private MapMover _map;

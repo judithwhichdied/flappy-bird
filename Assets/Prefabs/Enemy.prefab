@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bird: {fileID: 2134433131248321390, guid: a8fef4f701ee9374694396481badf3d5, type: 3}
-  _spawner: {fileID: 4522399234260622616, guid: 5d26c3911d15e344b80216041683fef9, type: 3}
+  _spawner: {fileID: 6444244801322562296, guid: 5d26c3911d15e344b80216041683fef9, type: 3}
 --- !u!114 &-5114003048339398990
 MonoBehaviour:
   m_ObjectHideFlags: 0

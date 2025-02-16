@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class ScoreViewer : MonoBehaviour
 {
-    [SerializeField] private EnemySpawner _spawner;
+    [SerializeField] private EnemyPool _spawner;
 
     private TextMeshProUGUI _scoreView;
 
