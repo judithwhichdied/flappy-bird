@@ -1880,6 +1880,14 @@ PrefabInstance:
       propertyPath: _input
       value: 
       objectReference: {fileID: 1051956387}
+    - target: {fileID: -4861066523849906776, guid: a8fef4f701ee9374694396481badf3d5, type: 3}
+      propertyPath: _mover
+      value: 
+      objectReference: {fileID: 1051956386}
+    - target: {fileID: -4861066523849906776, guid: a8fef4f701ee9374694396481badf3d5, type: 3}
+      propertyPath: _playerInput
+      value: 
+      objectReference: {fileID: 1051956387}
     - target: {fileID: 2134433131248321390, guid: a8fef4f701ee9374694396481badf3d5, type: 3}
       propertyPath: _input
       value: 
@@ -1904,6 +1912,14 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: d91b6b598bede09468737ac72e42eed2, type: 2}
+    - target: {fileID: 3147245680749353433, guid: a8fef4f701ee9374694396481badf3d5, type: 3}
+      propertyPath: _bullet
+      value: 
+      objectReference: {fileID: 7539452407689408755, guid: de4d9f3b487a09747aced47bc9054ab0, type: 3}
+    - target: {fileID: 3147245680749353433, guid: a8fef4f701ee9374694396481badf3d5, type: 3}
+      propertyPath: _playerInput
+      value: 
+      objectReference: {fileID: 1051956387}
     - target: {fileID: 4901325491880209179, guid: a8fef4f701ee9374694396481badf3d5, type: 3}
       propertyPath: m_audioClip
       value: 

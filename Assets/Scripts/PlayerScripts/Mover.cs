@@ -11,7 +11,6 @@ public class Mover : MonoBehaviour
     [SerializeField] private Sprite _jumpedSprite;
     [SerializeField] private Sprite _diedSprite;
     [SerializeField] private AudioClip _clip;
-    [SerializeField] private PlayerInput _input;
 
     private Rigidbody2D _body;
     private Bird _bird;
@@ -36,27 +35,34 @@ public class Mover : MonoBehaviour
         }      
     }
 
-    public void Reset()
-    {
-        _isDied = false;
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent<VerticalWall>(out VerticalWall _))
+        if (collision.gameObject.TryGetComponent<VerticalWall>(out _))
             _bird.Die();
     }
 
     private void OnEnable()
     {
         _bird.Died += StopMovement;
-        _input.Jumped += Jump;
     }
 
     private void OnDisable()
     {
         _bird.Died -= StopMovement;
-        _input.Jumped -= Jump;
+    }
+
+    public void Reset()
+    {
+        _isDied = false;
+    }
+
+    public void Jump()
+    {
+        _body.velocity = new Vector2(_body.velocity.x, _jumpForce);
+
+        StartCoroutine(SwitchSprite());
+
+        _audioSource.PlayOneShot(_clip);
     }
 
     private void StopMovement()
@@ -70,16 +76,7 @@ public class Mover : MonoBehaviour
     {
         return _horizontalSpeed;
     }
-
-    private void Jump()
-    {
-        _body.velocity = new Vector2(_body.velocity.x, _jumpForce);
-
-        StartCoroutine(SwitchSprite());
-
-        _audioSource.PlayOneShot(_clip);
-    }
-
+   
     private IEnumerator SwitchSprite()
     {
         float time = 0;

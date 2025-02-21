@@ -1,41 +1,24 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(AudioSource))]
-public class EnemyBullet : MonoBehaviour
+public class EnemyBullet : Bullet
 {
     [SerializeField] private AudioClip _clip;
     
     private AudioSource _audioSource;
 
-    private Rigidbody2D _body;
-
-    private float _speed = 3f;
-
-    private float _delay = 0.1f;
-
-    private void Awake()
+    private void Start()
     {
         _body = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
     }
 
-    private void Update()
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        _body.velocity = new Vector2(-_speed, _body.velocity.y);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.TryGetComponent<Bird> (out Bird bird))
+        if (collision.gameObject.TryGetComponent(out Bird bird))
         {
             bird.Die();
             _audioSource.PlayOneShot(_clip);
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.TryGetComponent<HorizontalWall>(out HorizontalWall _))
-            Destroy(gameObject, _delay);
     }
 }

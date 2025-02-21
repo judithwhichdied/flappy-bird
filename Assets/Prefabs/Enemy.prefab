@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6203408909469665330}
   - component: {fileID: 2286099894818967503}
   - component: {fileID: 573773408361159973}
+  - component: {fileID: 1937380246117235535}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -115,7 +116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5274e5a6c8f71b642ba5cd61040dc0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: -7238367618533239165, guid: bc4b6b01bea8d9b4f817a1b321bbb35e, type: 3}
   _hitSFX: {fileID: 8300000, guid: 602f8dba0000a3b49b55d1820cb6d206, type: 3}
   _spawnSFX: {fileID: 8300000, guid: 186505f0d5f660f48b1e28a3b31fa423, type: 3}
 --- !u!58 &6203408909469665330
@@ -276,3 +276,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1937380246117235535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257158251353587880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e784ffcdb94054eabdb3fa09b262ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bullet: {fileID: -7238367618533239165, guid: bc4b6b01bea8d9b4f817a1b321bbb35e, type: 3}

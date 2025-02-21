@@ -9,8 +9,6 @@ public class EnemyPool : MonoBehaviour
     [SerializeField] private Enemy _enemy;
     [SerializeField] private Bird _target;
 
-    private Vector3 _position;
-
     private float _minPositionY = -5f;
     private float _maxPositionY = 5f;
 
@@ -99,9 +97,7 @@ public class EnemyPool : MonoBehaviour
 
     private Vector3 GetPosition()
     {
-        _position = new Vector3(_target.transform.position.x + _spawnDistance, Random.Range(_minPositionY, _maxPositionY), _enemy.transform.position.z);
-
-        return _position;
+        return new Vector3(_target.transform.position.x + _spawnDistance, Random.Range(_minPositionY, _maxPositionY), _enemy.transform.position.z);
     }
 
     private IEnumerator Waiting(Enemy enemy)

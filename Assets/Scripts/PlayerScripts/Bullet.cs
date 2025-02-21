@@ -1,35 +1,30 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Bullet : MonoBehaviour
-{
-    private Rigidbody2D _body;
+public abstract class Bullet : MonoBehaviour 
+{   
+    [SerializeField] protected float _speed = 20f;
+    [SerializeField] protected float _delay = 0.1f;
+    [SerializeField] protected float _direction;
 
-    private float _speed = 20f;
+    protected Rigidbody2D _body;
 
-    private float _delay = 0.1f;
-
-    private void Awake()
+    protected void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
-        {
-            enemy.Die();
-        }
-    }
+    protected abstract void OnCollisionEnter2D(Collision2D collision);
+    
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent<HorizontalWall>(out HorizontalWall _))
+        if (collision.gameObject.TryGetComponent<HorizontalWall>(out _))
             Destroy(gameObject, _delay);
     }
 
-    private void Update()
+    protected void Update()
     {
-        _body.velocity = new Vector2(_speed, _body.velocity.y);
+        _body.velocity = new Vector2(_direction * _speed, _body.velocity.y);
     }
 }

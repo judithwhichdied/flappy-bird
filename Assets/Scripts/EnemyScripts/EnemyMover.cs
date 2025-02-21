@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -9,13 +10,9 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] private EnemyPool _spawner;
 
     private Rigidbody2D _body;
-
     private float _verticalSpeed = 3f;
-
     private bool _isReady = false;
-
     private float _direction = 1;
-
     private int _colliderObject;
 
     private void Awake()
@@ -31,22 +28,20 @@ public class EnemyMover : MonoBehaviour
     {
         _isReady = false;
         SetRandomDirection();
+
+        StartCoroutine(StartMoving());
     }
 
-    private void Update()
-    {
-        if (_isReady == true)
-        {
-            _body.velocity = new Vector2(_bird.GetSpeed(), _body.velocity.y);
-
-            _body.velocity = new Vector2(_body.velocity.x, _direction * _verticalSpeed);
-        }
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent<VerticalWall>(out VerticalWall _))
             SwitchDirection();
+    }
+
+    public void SetReady()
+    {
+        _isReady = true;
     }
 
     private void SwitchDirection()
@@ -59,14 +54,26 @@ public class EnemyMover : MonoBehaviour
         int minValue = 0;
         int maxValue = 100;
 
+        int neededValue =50;
+
         int successValue = Random.Range(minValue, maxValue);
 
-        if (successValue < 50)
+        if (successValue < neededValue)
             SwitchDirection();
     }
 
-    public void SetReady()
+    private IEnumerator StartMoving()
     {
-        _isReady = true;
-    }
+        while(_isReady == false)
+        {
+            yield return null;
+        }
+
+        while(_isReady && enabled)
+        {
+            _body.velocity = new Vector2(_bird.GetSpeed(), _direction * _verticalSpeed);
+
+            yield return null;
+        }
+    }   
 }
