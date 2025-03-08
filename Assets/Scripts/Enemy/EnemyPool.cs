@@ -73,14 +73,7 @@ public class EnemyPool : MonoBehaviour
 
     private IEnumerator DelaySpawning()
     {
-        float time = 0;
-
-        while (time < _delay)
-        {
-            time += Time.deltaTime;
-
-            yield return null;
-        }
+        yield return new WaitForSeconds(_delay);
 
         Spawn();
     }

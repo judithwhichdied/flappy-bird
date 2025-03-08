@@ -12,8 +12,6 @@ public class Enemy : MonoBehaviour
     private AudioSource _source;
     private EnemyMover _mover;
 
-    private float _delay = 2f;
-
     public event Action<Enemy> Died;
 
     private void Awake()
@@ -46,14 +44,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        StartCoroutine(DieDelaying());
         _source.PlayOneShot(_hitSFX);
-    }
-
-    private IEnumerator DieDelaying()
-    {
-        yield return new WaitForSeconds(_delay);
-
         Died?.Invoke(this);
     }
 

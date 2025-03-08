@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -11,17 +12,14 @@ public abstract class Bullet : MonoBehaviour
 
     protected void Awake()
     {
-        _body = GetComponent<Rigidbody2D>();
+        _body = GetComponent<Rigidbody2D>();       
     }
 
     protected abstract void OnCollisionEnter2D(Collision2D collision);
-    
 
-    protected void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.TryGetComponent<HorizontalWall>(out _))
-            Destroy(gameObject, _delay);
-    }
+
+    protected abstract void OnTriggerEnter2D(Collider2D collision);
+    
 
     protected void Update()
     {
